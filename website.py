@@ -129,26 +129,6 @@ class Website:
                         self.tree.append(child)
                         queue.append(child)
 
-            # for i in childrens:
-            #     print(i.url)
-
-            # all_urls = [self.url]
-            # queue = [self.url]
-            # for j in range(depth):
-            #     for count in range(len(queue)):
-            #         url = queue.pop(0)
-            #         urls = self.__grab_object_links(url)
-            #         for i in urls:
-            #             all_urls.append(i)
-            #             queue.append(i)
-
-                    # url = queue.pop(0)
-                    # urls = url.__grab_object_links()
-                    # for i in urls:
-                    #     child = Website(i, self.pattern)
-                    #     self.childrens.append(child)
-                    #     queue.append(i)
-
         threads = min(30, len(self.tree))
         with ThreadPoolExecutor(max_workers=threads) as executor:
             executor.map(self._scrape, self.tree)
